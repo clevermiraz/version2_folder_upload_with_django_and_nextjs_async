@@ -1,15 +1,19 @@
 "use client";
 
-import axios from "axios";
 import React, { useState } from "react";
-import UploadStagesHelp from "./dashboard/page";
+import UploadStagesHelp from "./components/UploadStage";
 
 const HomePage = () => {
     const [progressLog, setProgressLog] = useState<string[]>([]);
-    const [authToken, setAuthToken] = useState<string | null>(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNTYxNzU3LCJpYXQiOjE3Mzc5Njk3NTcsImp0aSI6IjZhODMyYmEyNGU4NTQwNzk5MDFmNjQ2NzhmMDU4NTdiIiwidXNlcl9pZCI6Mn0.aAF-N4lPOvM7Jqzn-9_f4kUkXOsbXWNQj2zl3os9_Uw"
-    );
     const [uploading, setUploading] = useState<boolean>(false);
+
+    const authToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjQ4MjIzLCJpYXQiOjE3MzgwNTYyMjMsImp0aSI6Ijg3Mjk0OTM2NDE4ZTRiOGFhODU1MGEyYTM3ZGJlZDA2IiwidXNlcl9pZCI6NX0.qR2D5Xm-OO-bBAwYjA2K14UVd4KRQUfW-9QoibMFUow";
+    const collectionId = "f050a8c5-16e6-494b-8da5-c3bcbd4c1a7f";
+    // const collectionId = "9ef1eed3-2741-4098-9173-b6c70058f151";
+    const baseUrl = "https://backend.amal.education";
+    // const baseUrl = "http://127.0.0.1:8000";
+
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         setUploading(true);
@@ -34,7 +38,7 @@ const HomePage = () => {
         try {
             // Use fetch instead of axios for proper streaming support
             const response = await fetch(
-                "http://127.0.0.1:8000/api/ai-assistant/collection-details/4013697f-7a67-4966-bc30-569607bc8b2a/folder-upload/",
+                `${baseUrl}/api/ai-assistant/collection-details/${collectionId}/folder-upload/`,
                 {
                     method: "POST",
                     body: formData,

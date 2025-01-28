@@ -1,9 +1,8 @@
-// src/app/layout.tsx
 import "./styles/globals.css";
 
 export const metadata = {
-    title: "My App",
-    description: "Google login integration with JWT",
+    title: "Folder Upload",
+    description: "Folder Upload On Streamming",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
