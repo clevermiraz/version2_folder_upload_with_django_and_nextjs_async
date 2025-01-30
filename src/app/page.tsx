@@ -8,11 +8,11 @@ const HomePage = () => {
     const [uploading, setUploading] = useState<boolean>(false);
 
     const authToken =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNjQ4MjIzLCJpYXQiOjE3MzgwNTYyMjMsImp0aSI6Ijg3Mjk0OTM2NDE4ZTRiOGFhODU1MGEyYTM3ZGJlZDA2IiwidXNlcl9pZCI6NX0.qR2D5Xm-OO-bBAwYjA2K14UVd4KRQUfW-9QoibMFUow";
-    const collectionId = "f050a8c5-16e6-494b-8da5-c3bcbd4c1a7f";
-    // const collectionId = "9ef1eed3-2741-4098-9173-b6c70058f151";
-    const baseUrl = "https://backend.amal.education";
-    // const baseUrl = "http://127.0.0.1:8000";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwODA1MDc4LCJpYXQiOjE3MzgyMTMwNzgsImp0aSI6ImZmZjcyMGI4MWY0ZDRlMDNiMzg4YzZmZWQxZmI3ZTg0IiwidXNlcl9pZCI6Mn0.z79WLRjOFaqRfjYAXhdIVSiJZKeeiLnhU81ay9YepQU";
+    // const collectionId = "f050a8c5-16e6-494b-8da5-c3bcbd4c1a7f";
+    const collectionId = "9ef1eed3-2741-4098-9173-b6c70058f151";
+    // const baseUrl = "https://backend.amal.education";
+    const baseUrl = "http://127.0.0.1:8000";
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -38,7 +38,7 @@ const HomePage = () => {
         try {
             // Use fetch instead of axios for proper streaming support
             const response = await fetch(
-                `${baseUrl}/api/ai-assistant/collection-details/${collectionId}/folder-upload/`,
+                `${baseUrl}/api/ai-assistant/collection-details/${collectionId}/async-folder-upload/`,
                 {
                     method: "POST",
                     body: formData,
